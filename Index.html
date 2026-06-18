@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAPA INTEGRADO DE PERFORMANCE — Neuro → Fisio → Prática</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', system-ui, -apple-system, sans-serif; background: #050810; }
+  h1,h2,h3 { font-family: 'Space Grotesk', sans-serif; }
+  .glass { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+  .layer { opacity: 0; transform: translateY(28px); transition: all .8s cubic-bezier(.2,.8,.2,1); }
+  .layer.in { opacity: 1; transform: translateY(0); }
+  .glow-blue { box-shadow: 0 0 0 1px rgba(59,130,246,.18), 0 0 60px rgba(59,130,246,.12), inset 0 1px 0 rgba(255,255,255,.03); }
+  .glow-orange { box-shadow: 0 0 0 1px rgba(249,115,22,.18), 0 0 60px rgba(249,115,22,.1), inset 0 1px 0 rgba(255,255,255,.03); }
+  .glow-green { box-shadow: 0 0 0 1px rgba(34,197,94,.18), 0 0 60px rgba(34,197,94,.1), inset 0 1px 0 rgba(255,255,255,.03); }
+  .glow-gold { box-shadow: 0 0 0 1px rgba(245,158,11,.22), 0 0 70px rgba(245,158,11,.14), inset 0 1px 0 rgba(255,255,255,.05); }
+  .spin-slow { animation: spin 50s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .float { animation: float 6s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+</style>
+</head>
+<body class="text-slate-200 selection:bg-cyan-500/30 selection:text-white">
+<div class="fixed inset-0 -z-20">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#0b1220_0%,_#050810_60%,_#02040a_100%)]"></div>
+  <div class="absolute top-[-25%] left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-blue-600/10 blur-[180px]"></div>
+  <div class="absolute bottom-[-20%] -right-[10%] w-[700px] h-[700px] rounded-full bg-amber-500/10 blur-[160px]"></div>
+  <div class="absolute top-[40%] -left-[20%] w-[500px] h-[500px] rounded-full bg-emerald-500/8 blur-[140px]"></div>
+</div>
+
+<header class="sticky top-0 z-40 border-b border-white/5 bg-[#050810]/70 backdrop-blur-xl">
+  <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="size-10 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-400 grid place-items-center shadow-lg shadow-blue-600/20">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+      </div>
+      <div>
+        <h1 class="text-[15px] font-semibold tracking-wide leading-tight">MAPA INTEGRADO DE PERFORMANCE</h1>
+        <p class="text-[11px] tracking-[0.18em] text-slate-500 -mt-0.5">NEURO → FISIO → PRÁTICA</p>
+      </div>
+    </div>
+    <div class="hidden md:flex gap-1.5">
+      <span class="px-2.5 py-1 rounded-full text-[11px] bg-blue-500/10 text-blue-300 border border-blue-500/20">Neuro</span>
+      <span class="px-2.5 py-1 rounded-full text-[11px] bg-orange-500/10 text-orange-300 border border-orange-500/20">Fisio</span>
+      <span class="px-2.5 py-1 rounded-full text-[11px] bg-green-500/10 text-green-300 border border-green-500/20">Prática</span>
+      <span class="px-2.5 py-1 rounded-full text-[11px] bg-amber-500/10 text-amber-300 border border-amber-500/20">Espiritual</span>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 pt-12 pb-24">
+  <div class="text-center max-w-3xl mx-auto mb-16">
+    <h2 class="text-3xl md:text-5xl font-bold tracking-tight bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent leading-[1.1]">Do pensamento à química.<br>Da química à ação.</h2>
+    <p class="mt-4 text-slate-400 md:text-lg">Visualize como seu cérebro, hormônios, treino e fé trabalham como um único sistema. Toque ou passe o mouse nos elementos.</p>
+  </div>
+
+  <!-- 1 NEURO -->
+  <section class="layer">
+    <div class="relative rounded-[32px] p-[1px] bg-gradient-to-b from-blue-500/30 to-transparent glow-blue">
+      <div class="rounded-[30px] bg-[#0a1020]/80 glass border border-blue-500/15 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="size-12 shrink-0 rounded-2xl bg-blue-500/15 border border-blue-400/30 grid place-items-center text-blue-300 float">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 0 0 1-4.96.44 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 0 0 1 1.98-3A2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 class="text-xl md:text-2xl font-semibold text-white">1. CAMADA NEUROCIENTÍFICA</h3>
+              <span class="text-[10px] uppercase tracking-widest px-2 py-1 rounded bg-blue-500/15 text-blue-200 border border-blue-500/20">top</span>
+            </div>
+            <p class="text-slate-400 text-sm mt-1">Subconsciente • Emoções • Neurotransmissores</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-3 mt-6">
+          <div class="md:col-span-2 group relative" tabindex="0">
+            <div class="h-full rounded-2xl bg-slate-900/70 border border-slate-800 p-4 hover:border-blue-500/40 transition">
+              <p class="text-xs text-blue-300 uppercase tracking-wider">Subconsciente</p>
+              <p class="text-sm text-slate-300 mt-1">95% das decisões automáticas</p>
+            </div>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 max-w-[85vw] p-3 rounded-xl bg-[#0b1428] border border-blue-500/30 text-xs text-slate-200 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none z-20 shadow-xl">Programado por repetição, emoção e ambiente. Você não vence na força, vence na reprogramação diária.</div>
+          </div>
+          <div class="md:col-span-3 group relative" tabindex="0">
+            <div class="h-full rounded-2xl bg-slate-900/70 border border-slate-800 p-4 hover:border-blue-500/40 transition">
+              <p class="text-xs text-blue-300 uppercase tracking-wider">Emoções</p>
+              <p class="text-sm text-slate-300 mt-1">Sinalização que vira química em segundos</p>
+            </div>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 max-w-[85vw] p-3 rounded-xl bg-[#0b1428] border border-blue-500/30 text-xs text-slate-200 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none z-20 shadow-xl">Emoção sustentada = neurotransmissor sustentado. Gratidão e medo não coexistem no mesmo circuito.</div>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-3 mt-3">
+          <!-- Dopamina -->
+          <div class="group relative" tabindex="0">
+            <div class="rounded-2xl bg-gradient-to-b from-blue-500/10 to-transparent border border-blue-500/20 p-4 hover:-translate-y-0.5 transition cursor-pointer">
+              <div class="flex items-center justify-between">
+                <span class="font-medium text-blue-100">Dopamina</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-200">motivação</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-2">Sistema de busca e recompensa</p>
+            </div>
+            <div class="absolute z-30 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#0b1428] border border-blue-400/30 text-xs leading-snug opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Liberada por progresso visível, sol matinal, treino. Destruída por scroll infinito e açúcar. Use para direção, não para fuga.</div>
+          </div>
+          <!-- Serotonina -->
+          <div class="group relative" tabindex="0">
+            <div class="rounded-2xl bg-gradient-to-b from-blue-500/10 to-transparent border border-blue-500/20 p-4 hover:-translate-y-0.5 transition cursor-pointer">
+              <div class="flex items-center justify-between">
+                <span class="font-medium text-blue-100">Serotonina</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-200">bem-estar</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-2">Estabilidade e humor</p>
+            </div>
+            <div class="absolute z-30 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#0b1428] border border-blue-400/30 text-xs leading-snug opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Aumenta com luz, sono regular, triptofano, gratidão e exercício zona 2. Base da calma.</div>
+          </div>
+          <!-- Melatonina -->
+          <div class="group relative" tabindex="0">
+            <div class="rounded-2xl bg-gradient-to-b from-blue-500/10 to-transparent border border-blue-500/20 p-4 hover:-translate-y-0.5 transition cursor-pointer">
+              <div class="flex items-center justify-between">
+                <span class="font-medium text-blue-100">Melatonina</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-200">sono</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-2">Relógio circadiano</p>
+            </div>
+            <div class="absolute z-30 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#0b1428] border border-blue-400/30 text-xs leading-snug opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Bloqueada por telas após 21h. Liberada no escuro total. Magnésio, rotina e frio ajudam.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center my-8">
+    <div class="h-12 w-px bg-gradient-to-b from-blue-500/50 to-orange-500/50 relative">
+      <svg class="absolute -bottom-2 -left-[9px] text-slate-500 animate-bounce" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </div>
+
+  <!-- 2 FISIO -->
+  <section class="layer">
+    <div class="relative rounded-[32px] p-[1px] bg-gradient-to-b from-orange-500/30 to-transparent glow-orange">
+      <div class="rounded-[30px] bg-[#141008]/80 glass border border-orange-500/15 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="size-12 shrink-0 rounded-2xl bg-orange-500/15 border border-orange-400/30 grid place-items-center text-orange-300">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 0 0 0 .33-1.82 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl md:text-2xl font-semibold text-white">2. CAMADA FISIOLÓGICA</h3>
+            <p class="text-slate-400 text-sm mt-1">Mente → Corpo • Hormônios que decidem sua energia</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+          <div class="group relative" tabindex="0">
+            <div class="rounded-2xl bg-slate-900/60 border border-orange-500/20 p-4 h-full hover:bg-slate-900 transition">
+              <p class="font-medium text-orange-200">Testosterona</p>
+              <p class="text-xs text-slate-500 mt-1">Drive & recuperação</p>
+            </div>
+            <div class="absolute z-30 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#1a1208] border border-orange-400/30 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Sobe com sono profundo, treino de força, sol, déficit calórico moderado. Cai com estresse crônico e álcool.</div>
+          </div>
+          <div class="group relative" tabindex="0">
+            <div class="rounded-2xl bg-slate-900/60 border border-orange-500/20 p-4 h-full">
+              <p class="font-medium text-orange-200">DHT</p>
+              <p class="text-xs text-slate-500 mt-1">Foco & assertividade</p>
+            </div>
+            <div class="absolute z-30 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#1a1208] border border-orange-400/30 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Derivado da testo. Sensível a sono e insulina. Excesso sem base = queda de cabelo, pele oleosa.</div>
+          </div>
+          <div class="group relative" tabindex="0">
+            <div class="rounded-2xl bg-slate-900/60 border border-orange-500/20 p-4 h-full">
+              <p class="font-medium text-orange-200">Estrogênio</p>
+              <p class="text-xs text-slate-500 mt-1">Equilíbrio</p>
+            </div>
+            <div class="absolute z-30 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#1a1208] border border-orange-400/30 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Necessário para cérebro e articulações. Aromatização ↑ com gordura visceral. Controle com composição corporal.</div>
+          </div>
+          <div class="group relative" tabindex="0">
+            <div class="rounded-2xl bg-slate-900/60 border border-orange-500/20 p-4 h-full">
+              <p class="font-medium text-orange-200">Cortisol</p>
+              <p class="text-xs text-slate-500 mt-1">Estresse</p>
+            </div>
+            <div class="absolute z-30 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#1a1208] border border-orange-400/30 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Agudo = performance. Crônico = rouba testo, quebra músculo, armazena gordura abdominal. Respiração, luz e sono regulam.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center my-8">
+    <div class="h-12 w-px bg-gradient-to-b from-orange-500/50 to-green-500/50"></div>
+  </div>
+
+  <!-- 3 PRATICA -->
+  <section class="layer">
+    <div class="relative rounded-[32px] p-[1px] bg-gradient-to-b from-green-500/30 to-transparent glow-green">
+      <div class="rounded-[30px] bg-[#07140d]/80 glass border border-green-500/15 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="size-12 shrink-0 rounded-2xl bg-green-500/15 border border-green-400/30 grid place-items-center text-green-300">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4c0-1.1.9-2 2-2"/><path d="M20 2c0 1.1-.9 2-2 2"/><path d="M22 8c0 1.1-.9 2-2 2"/><path d="M16 10c0 1.1.9 2 2 2"/><path d="m4 6 6 6"/><path d="M12 12v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4c0-1.1.9-2 2-2h2"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl md:text-2xl font-semibold text-white">3. CAMADA PRÁTICA</h3>
+            <p class="text-slate-400 text-sm mt-1">O que você faz todo dia vira química</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+          <!-- Nutrição -->
+          <div>
+            <h4 class="text-sm uppercase tracking-widest text-green-300 mb-3 flex items-center gap-2"><span class="size-1.5 rounded-full bg-green-400"></span> Nutrição</h4>
+            <div class="space-y-2.5">
+              <div class="group relative" tabindex="0">
+                <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3 hover:border-green-500/30"><span>Proteína</span><span class="text-xs text-slate-500">1.6–2.2g/kg</span></div>
+                <div class="absolute z-20 left-0 top-full mt-1 w-full p-2.5 rounded-lg bg-[#0a1a12] border border-green-500/20 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Aminoácidos = dopamina, serotonina e reparo muscular.</div>
+              </div>
+              <div class="group relative" tabindex="0">
+                <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3 hover:border-green-500/30"><span>Carboidrato</span><span class="text-xs text-slate-500">peri-treino</span></div>
+                <div class="absolute z-20 left-0 top-full mt-1 w-full p-2.5 rounded-lg bg-[#0a1a12] border border-green-500/20 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Reabastece glicogênio, reduz cortisol, suporta serotonina.</div>
+              </div>
+              <div class="group relative" tabindex="0">
+                <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3 hover:border-green-500/30"><span>Gordura</span><span class="text-xs text-slate-500">hormônios</span></div>
+                <div class="absolute z-20 left-0 top-full mt-1 w-full p-2.5 rounded-lg bg-[#0a1a12] border border-green-500/20 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Colesterol é precursor de testo. Ômega-3 = anti-inflamatório cerebral.</div>
+              </div>
+              <div class="group relative" tabindex="0">
+                <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3 hover:border-green-500/30"><span>Vitaminas/Minerais</span><span class="text-xs text-slate-500">D3, Mg, Zn</span></div>
+                <div class="absolute z-20 left-0 top-full mt-1 w-full p-2.5 rounded-lg bg-[#0a1a12] border border-green-500/20 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Cofatores para 300+ reações neuro-hormonais. Sem eles, nada funciona.</div>
+              </div>
+            </div>
+          <!-- Treinamento -->
+          <div>
+            <h4 class="text-sm uppercase tracking-widest text-green-300 mb-3 flex items-center gap-2"><span class="size-1.5 rounded-full bg-green-400"></span> Treinamento</h4>
+            <div class="space-y-2.5">
+              <div class="group relative" tabindex="0">
+                <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3 hover:border-green-500/30"><span>Força</span><span class="text-xs text-slate-500">3–5 reps</span></div>
+                <div class="absolute z-20 left-0 top-full mt-1 w-full p-2.5 rounded-lg bg-[#0a1a12] border border-green-500/20 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Sinal máximo para SNC e testosterona. Base do sistema.</div>
+              </div>
+              <div class="group relative" tabindex="0">
+                <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3 hover:border-green-500/30"><span>Hipertrofia</span><span class="text-xs text-slate-500">6–12 reps</span></div>
+                <div class="absolute z-20 left-0 top-full mt-1 w-full p-2.5 rounded-lg bg-[#0a1a12] border border-green-500/20 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Aumenta sensibilidade à insulina e depósito de glicogênio.</div>
+              </div>
+              <div class="group relative" tabindex="0">
+                <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3 hover:border-green-500/30"><span>Resistência</span><span class="text-xs text-slate-500">Zona 2</span></div>
+                <div class="absolute z-20 left-0 top-full mt-1 w-full p-2.5 rounded-lg bg-[#0a1a12] border border-green-500/20 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Mitocôndrias, coração e controle basal de cortisol.</div>
+              </div>
+              <div class="group relative" tabindex="0">
+                <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3 hover:border-green-500/30"><span>Periodização</span><span class="text-xs text-slate-500">carga/descarga</span></div>
+                <div class="absolute z-20 left-0 top-full mt-1 w-full p-2.5 rounded-lg bg-[#0a1a12] border border-green-500/20 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Evita fadiga neuroquímica. Performance é onda, não linha reta.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center my-8">
+    <div class="h-12 w-px bg-gradient-to-b from-green-500/50 to-slate-600/50"></div>
+  </div>
+
+  <!-- 4 LOOP -->
+  <section class="layer">
+    <div class="relative rounded-[32px] border border-slate-800 bg-[#080c16]/70 glass p-8 md:p-12">
+      <div class="text-center mb-10">
+        <h3 class="text-xl md:text-2xl font-semibold">4. LOOP DE INTEGRAÇÃO</h3>
+        <p class="text-slate-400 text-sm mt-1">Neuro → Emoção → Fisiologia → Ação → Química → Cérebro</p>
+      </div>
+
+      <div class="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] md:w-[440px] md:h-[440px] mx-auto">
+        <div class="absolute inset-0 rounded-full border border-slate-700/40"></div>
+        <div class="absolute inset-[18px] rounded-full border border-dashed border-slate-600/30 spin-slow"></div>
+        <div class="absolute inset-[36px] rounded-full bg-[radial-gradient(circle,_rgba(59,130,246,0.08),_transparent_60%)]"></div>
+        
+        <div class="absolute inset-0 grid place-items-center">
+          <div class="text-center">
+            <p class="text-[10px] uppercase tracking-[0.25em] text-slate-500">Sistema</p>
+            <p class="text-lg font-semibold text-white">Fechado</p>
+          </div>
+        </div>
+
+        <!-- nodes -->
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 group" tabindex="0">
+          <div class="px-3 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-200 text-xs font-medium backdrop-blur">Neuro</div>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-48 p-2 rounded-lg bg-slate-900 border border-slate-700 text-[11px] text-center opacity-0 group-hover:opacity-100 transition pointer-events-none">Pensamento inicia o loop</div>
+        </div>
+        <div class="absolute top-[18%] -right-3 group" tabindex="0">
+          <div class="px-3 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-200 text-xs font-medium backdrop-blur">Emoção</div>
+          <div class="absolute right-0 top-full mt-2 w-48 p-2 rounded-lg bg-slate-900 border border-slate-700 text-[11px] text-center opacity-0 group-hover:opacity-100 transition pointer-events-none">Vira sinal químico</div>
+        </div>
+        <div class="absolute bottom-[18%] -right-3 group" tabindex="0">
+          <div class="px-3 py-1.5 rounded-full bg-orange-500/15 border border-orange-400/30 text-orange-200 text-xs font-medium backdrop-blur">Fisiologia</div>
+          <div class="absolute right-0 bottom-full mb-2 w-48 p-2 rounded-lg bg-slate-900 border border-slate-700 text-[11px] text-center opacity-0 group-hover:opacity-100 transition pointer-events-none">Hormônios sobem/descem</div>
+        </div>
+        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 group" tabindex="0">
+          <div class="px-3 py-1.5 rounded-full bg-green-500/15 border border-green-400/30 text-green-200 text-xs font-medium backdrop-blur">Ação</div>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 p-2 rounded-lg bg-slate-900 border border-slate-700 text-[11px] text-center opacity-0 group-hover:opacity-100 transition pointer-events-none">Treino, comida, sono</div>
+        </div>
+        <div class="absolute bottom-[18%] -left-3 group" tabindex="0">
+          <div class="px-3 py-1.5 rounded-full bg-green-500/15 border border-green-400/30 text-green-200 text-xs font-medium backdrop-blur">Química</div>
+          <div class="absolute left-0 bottom-full mb-2 w-48 p-2 rounded-lg bg-slate-900 border border-slate-700 text-[11px] text-center opacity-0 group-hover:opacity-100 transition pointer-events-none">Nutrientes viram substrato</div>
+        </div>
+        <div class="absolute top-[18%] -left-3 group" tabindex="0">
+          <div class="px-3 py-1.5 rounded-full bg-slate-700/60 border border-slate-500/30 text-slate-200 text-xs font-medium backdrop-blur">Cérebro</div>
+          <div class="absolute left-0 top-full mt-2 w-48 p-2 rounded-lg bg-slate-900 border border-slate-700 text-[11px] text-center opacity-0 group-hover:opacity-100 transition pointer-events-none">Recebe feedback e reinicia</div>
+        </div>
+
+        <!-- arrows -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 440 440">
+          <defs>
+            <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#475569" stroke-width="1"/></marker>
+          </defs>
+          <path d="M220 30 A 190 190 0 0 1 385 140" fill="none" stroke="#334155" stroke-dasharray="4 6" marker-end="url(#a)"/>
+          <path d="M385 140 A 190 190 0 0 1 385 300" fill="none" stroke="#334155" stroke-dasharray="4 6" marker-end="url(#a)"/>
+          <path d="M385 300 A 190 190 0 0 1 220 410" fill="none" stroke="#334155" stroke-dasharray="4 6" marker-end="url(#a)"/>
+          <path d="M220 410 A 190 190 0 0 1 55 300" fill="none" stroke="#334155" stroke-dasharray="4 6" marker-end="url(#a)"/>
+          <path d="M55 300 A 190 190 0 0 1 55 140" fill="none" stroke="#334155" stroke-dasharray="4 6" marker-end="url(#a)"/>
+          <path d="M55 140 A 190 190 0 0 1 220 30" fill="none" stroke="#334155" stroke-dasharray="4 6" marker-end="url(#a)"/>
+        </svg>
+      </div>
+      <p class="text-center text-xs text-slate-500 mt-8 max-w-xl mx-auto">Quebre o loop em qualquer ponto: mude o pensamento, mude a ação, ou mude a química. O sistema responde em horas, não em meses.</p>
+    </div>
+  </section>
+
+  <div class="flex justify-center my-8">
+    <div class="h-12 w-px bg-gradient-to-b from-slate-600/50 to-amber-500/50"></div>
+  </div>
+
+  <!-- 5 ESPIRITUAL -->
+  <section class="layer">
+    <div class="relative rounded-[32px] p-[1px] bg-gradient-to-b from-amber-400/40 to-transparent glow-gold">
+      <div class="rounded-[30px] bg-[#141005]/85 glass border border-amber-500/20 p-6 md:p-8 overflow-hidden relative">
+        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-amber-500/10 blur-[80px]"></div>
+        <div class="flex items-start gap-4 relative">
+          <div class="size-12 shrink-0 rounded-2xl bg-amber-500/15 border border-amber-400/30 grid place-items-center text-amber-300">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.9 3.8 4.2.6-3 3 .7 4.2-3.8-2-3.8 2 .7-4.2-3-3 4.2-.6z"/><path d="M19 14l1.5 3 3 .5-2 2 .5 3-3-1.5-3 1.5.5-3-2-2 3-.5z"/><path d="M6 18l-1.5 3-3 .5 2 2-.5 3 3-1.5 3 1.5-.5-3 2-2-3-.5z"/></svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 class="text-xl md:text-2xl font-semibold text-amber-100">5. CAMADA ESPIRITUAL</h3>
+              <span class="text-[10px] uppercase tracking-widest px-2 py-1 rounded bg-amber-500/15 text-amber-200 border border-amber-500/25">AMPLIFICADOR</span>
+            </div>
+            <p class="text-amber-100/70 text-sm mt-1">Fé, propósito e Palavra como sinal mestre que regula o sistema inteiro.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-3 mt-6 relative">
+          <div class="group relative" tabindex="0">
+            <div class="h-full rounded-2xl bg-amber-500/5 border border-amber-400/20 p-5 hover:bg-amber-500/10 transition">
+              <p class="font-medium text-amber-200">Fé</p>
+              <p class="text-sm text-amber-100/70 mt-1">Reduz incerteza → cortisol ↓</p>
+            </div>
+            <div class="absolute z-20 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#1a1405] border border-amber-400/30 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Crença antecipa recompensa. Ativa dopamina sustentável e reduz amigdala.</div>
+          </div>
+          <div class="group relative" tabindex="0">
+            <div class="h-full rounded-2xl bg-amber-500/5 border border-amber-400/20 p-5 hover:bg-amber-500/10 transition">
+              <p class="font-medium text-amber-200">Propósito</p>
+              <p class="text-sm text-amber-100/70 mt-1">Direção única → energia</p>
+            </div>
+            <div class="absolute z-20 left-1/2 -translate-x-1/2 top-full mt-2 w-60 p-3 rounded-xl bg-[#1a1405] border border-amber-400/30 text-xs opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Propósito alinha dopamina de longo prazo. Evita vícios de curto prazo.</div>
+          </div>
+          <div class="group relative" tabindex="0">
+            <div class="h-full rounded-2xl bg-amber-500/5 border border-amber-400/20 p-5 hover:bg-amber-500/10 transition">
+              <p class="font-medium text-amber-200">Versículos</p>
+              <p class="text-sm text-amber-100/70 mt-1">Reprogramação diária</p>
+            </div>
+            <div class="absolute z-20 left-1/2 -translate-x-1/2 top-full mt-2 w-64 p-3 rounded-xl bg-[#1a1405] border border-amber-400/30 text-xs leading-relaxed opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition pointer-events-none">Filipenses 4:8 • Provérbios 23:7 • Romanos 12:2 — filtros para o subconsciente.</div>
+          </div>
+        </div>
+
+        <div class="mt-6 grid sm:grid-cols-3 gap-2.5">
+          <div class="rounded-xl bg-black/30 border border-amber-900/30 p-3 text-[12px] text-amber-100/80"><span class="text-amber-300">Filipenses 4:8</span> — "Pensem no que é verdadeiro, nobre, justo, puro..."</div>
+          <div class="rounded-xl bg-black/30 border border-amber-900/30 p-3 text-[12px] text-amber-100/80"><span class="text-amber-300">Provérbios 23:7</span> — "Como imagina em sua alma, assim ele é."</div>
+          <div class="rounded-xl bg-black/30 border border-amber-900/30 p-3 text-[12px] text-amber-100/80"><span class="text-amber-300">Romanos 12:2</span> — "Transformem-se pela renovação da mente."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="layer mt-16">
+    <div class="rounded-[32px] border border-slate-800 bg-slate-900/40 glass p-6 md:p-8">
+      <div class="flex items-center justify-between gap-4 flex-wrap">
+        <div>
+          <h3 class="text-xl font-semibold">Checklist Diário de Regulação</h3>
+          <p class="text-sm text-slate-400">Marque. O que é medido, é regulado.</p>
+        </div>
+        <button id="resetCheck" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300">Limpar</button>
+      </div>
+      <div id="checklist" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5 mt-5">
+        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-[#0b1220] border border-slate-800 hover:border-slate-700 cursor-pointer"><input type="checkbox" data-key="sol" class="size-4 accent-cyan-500"><span class="text-sm">Sol 10min cedo (Serotonina)</span></label>
+        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-[#0b1220] border border-slate-800 hover:border-slate-700 cursor-pointer"><input type="checkbox" data-key="sono" class="size-4 accent-cyan-500"><span class="text-sm">Dormir 7-8h sem telas (Melatonina)</span></label>
+        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-[#0b1220] border border-slate-800 hover:border-slate-700 cursor-pointer"><input type="checkbox" data-key="treino" class="size-4 accent-cyan-500"><span class="text-sm">Treino força 45min (Testo)</span></label>
+        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-[#0b1220] border border-slate-800 hover:border-slate-700 cursor-pointer"><input type="checkbox" data-key="proteina" class="size-4 accent-cyan-500"><span class="text-sm">30-40g proteína cada refeição</span></label>
+        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-[#0b1220] border border-slate-800 hover:border-slate-700 cursor-pointer"><input type="checkbox" data-key="respira" class="size-4 accent-cyan-500"><span class="text-sm">Respiração 5min (Cortisol ↓)</span></label>
+        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-[#0b1220] border border-slate-800 hover:border-slate-700 cursor-pointer"><input type="checkbox" data-key="gratidao" class="size-4 accent-cyan-500"><span class="text-sm">Gratidão + versículo (Fé)</span></label>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-20 text-center max-w-3xl mx-auto">
+    <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500 mb-3">Princípio Central</p>
+    <blockquote class="text-2xl md:text-[32px] leading-snug font-light text-slate-200">“Você não muda sua vida só pelo que pensa… <span class="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent font-medium">você muda pelo que regula no seu corpo todos os dias.</span>”</blockquote>
+    <div class="mt-8 flex justify-center gap-2">
+      <span class="w-16 h-px bg-gradient-to-r from-transparent to-blue-500/50"></span>
+      <span class="w-16 h-px bg-gradient-to-r from-blue-500/50 to-orange-500/50"></span>
+      <span class="w-16 h-px bg-gradient-to-r from-orange-500/50 to-green-500/50"></span>
+      <span class="w-16 h-px bg-gradient-to-r from-green-500/50 to-amber-500/50"></span>
+      <span class="w-16 h-px bg-gradient-to-r from-amber-500/50 to-transparent"></span>
+    </div>
+  </div>
+</main>
+
+<footer class="border-t border-white/5 py-8 text-center text-xs text-slate-600">
+  Mapa Integrado de Performance • Neurociência • Fisiologia • Prática • Espiritualidade
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} })
+  },{threshold:0.15});
+  document.querySelectorAll('.layer').forEach(el=>io.observe(el));
+
+  // checklist persistence
+  const boxes = document.querySelectorAll('#checklist input');
+  boxes.forEach(b=>{
+    const k = 'mip_'+b.dataset.key;
+    b.checked = localStorage.getItem(k)==='1';
+    b.addEventListener('change',()=> localStorage.setItem(k, b.checked?'1':'0'));
+  });
+  document.getElementById('resetCheck').addEventListener('click',()=>{
+    boxes.forEach(b=>{ b.checked=false; localStorage.removeItem('mip_'+b.dataset.key); });
+  });
+
+  // make tooltips accessible on touch
+  document.querySelectorAll('.group[tabindex]').forEach(el=>{
+    el.addEventListener('touchstart',()=>{}, {passive:true});
+  });
+</script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;var a=target.closest?target.closest("a[href]"):null;if(!a||!a.href||!/^https?:\/\//.test(a.href))return;if(a.href.replace(/#.*$/,"")===loc)return;var productId=extractProductId(target)||extractProductId(a);if(!productId)return;e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*")},true)})();</script></body>
+</html>
